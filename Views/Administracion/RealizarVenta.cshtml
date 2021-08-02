@@ -1,0 +1,84 @@
+﻿@{
+
+    ViewData["Title"] = "Añadir venta";
+
+}
+
+<h4 class="text-center">Añadir nueva venta.</h4>
+<hr />
+
+<form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label"> Producto </label>
+                @Html.DropDownList("Productos", (IEnumerable<SelectListItem>)ViewBag.ListaProducto, null, new { @class = "form-control", @id = "Productos" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label"> Tienda </label>
+                @Html.DropDownList("Tiendas", (IEnumerable<SelectListItem>)ViewBag.ListaTienda, null, new { @class = "form-control", @id = "Tiendas" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label"> Cantidad </label>
+                <input type="number" class="form-control" id="Cantidad" name="Cantidad" value="0" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label"> Precio Unidad </label>
+                <input id="PrecioMul" type="text" class="form-control" name="PrecioMul" value="0" disabled />
+                <input id="ProductoNombre" type="text" class="form-control" hidden disabled />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label"> Total </label>
+                <input type="number" class="form-control" id="Total" name="Total" value="0" disabled />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-primary btn-block" onclick="NuevaColumna()">
+            Añadir Producto
+            <i class="fas fa-cart-plus m-1"></i>
+        </button>
+    </div>
+</form>
+<div class="card mb-4" id="Tarjeta">
+    <div class="card-header">
+        <i class="fas fa-cash-register m-1"></i>
+        Productos en la lista
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped" id="ProductosTabla">
+            <thead>
+                <tr>
+                    <th>Item #</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+        <button type="button" class="btn btn-info btn-block" id="guardar" onclick="GuardarVenta()">
+            Guardar venta
+            <i class="fas fa-archive m-1"></i>
+        </button>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a la lista.</a>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>

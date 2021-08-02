@@ -1,0 +1,37 @@
+@model WebMasterIdentity.Models.Producto
+
+@{
+    ViewData["Title"] = "Detalles Productp";
+}
+
+<h4 class="text-center">Detalles Producto:  @Html.DisplayFor(model => model.NombreProducto)</h4>
+<hr />
+
+
+<div class="text-center">
+    <dl class="row">
+        
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Categoria.NombreCategoria)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ProductoId">Editar </a> |
+    <a asp-action="Index">Regresara a la lista</a>
+</div>

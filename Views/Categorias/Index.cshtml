@@ -1,0 +1,50 @@
+@model IEnumerable<WebMasterIdentity.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<h4 class="text-center">Lista de Tiendas</h4>
+<hr />
+<div class="card mb-4" id="Tarjeta">
+
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreCategoria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </th>
+                    <th>
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreCategoria)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" class="btn btn-light" asp-route-id="@item.CategoriaId"> Editar </a>
+                            <a asp-action="Details" class="btn btn-warning" asp-route-id="@item.CategoriaId"> Detalles</a>
+                            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.CategoriaId"> Eliminar </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p>
+    <a class="btn btn-primary btn-block" asp-action="Create">Crear Categoria</a>
+</p>

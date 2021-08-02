@@ -1,0 +1,60 @@
+@model IEnumerable<WebMasterIdentity.Models.Producto>
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<h4 class="text-center">Lista Productos</h4>
+<hr />
+<div class="card mb-4" id="Tarjeta">
+
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreProducto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Precio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Categoria)
+                    </th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Precio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categoria.NombreCategoria)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" class="btn btn-light" asp-route-id="@item.ProductoId"> Editar </a>
+                            <a asp-action="Details" class="btn btn-warning " asp-route-id="@item.ProductoId"> Detalles</a>
+                            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.ProductoId"> Eliminar </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p>
+    <a class="btn btn-primary btn-block" asp-action="Create">Crear Producto</a>
+</p>
